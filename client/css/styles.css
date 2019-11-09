@@ -24,17 +24,29 @@ header p {
     min-height: 50vh;
     position: relative;
 }
-.main .safari .population {
+.main .safari .meters {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    width: 300px;
+    width: 100%;
     margin: auto;
     text-align: center;
     font-size: 50px;
     font-weight: bold;
     border: 1px solid blue;
+}
+
+.meters .progress {
+    height: 50px;
+}
+.progress-bar.budget-bar {
+    background-color: #30f351;
+}
+
+.population, .budget {
+    position: relative;
+    width: 100%;
 }
 
 .rhino-row .col {
@@ -49,6 +61,10 @@ header p {
 /* Control Panel*/
 .main .control-panel .action-btn {
     width: 100%;
+    height: 80px;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 10px;
 }
 
 .main .control-panel .control-row {
