@@ -19,10 +19,13 @@ header p {
 
 /* Safari Area */
 .main .safari {
-    border: 1px solid red;
     width: 100%;
     min-height: 50vh;
     position: relative;
+    background-image: url('../images/safari.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding-top: 370px;
 }
 .main .safari .meters {
     position: absolute;
@@ -35,6 +38,15 @@ header p {
     font-size: 50px;
     font-weight: bold;
     border: 1px solid blue;
+}
+.rhino-img {
+    width: 120px;
+    margin: 0 auto;
+    display: block;
+}
+span.rhino-name {
+    display: inline-block;
+    margin: 0 auto;
 }
 
 .meters .progress {
@@ -50,11 +62,10 @@ header p {
 }
 
 .rhino-row .col {
-    border:1px solid pink;
+    /* border:1px solid pink; */
 }
 
 .rhino-position {
-    padding: 20px;
     text-align: center;
 }
 

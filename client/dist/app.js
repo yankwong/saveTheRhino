@@ -104,7 +104,7 @@ STR.games = (function () {
             const animateDelay = getAnimationDelay();
 
             const imgHtml = `
-            <img class="animated infinite delay-${animateDelay}s ${rhinoAnimateStyle} alive rhino-${rhinoId}" src="https://place-hold.it/40x40/grey" alt="${rhinoName}">
+            <img class="animated rhino-img infinite delay-${animateDelay}s ${rhinoAnimateStyle} alive rhino-${rhinoId}" src="client/images/rhino.png" alt="${rhinoName}">
             <span class="rhino-name">${rhinoName}</span>`;
             $positionDiv.prepend(imgHtml);
         },
