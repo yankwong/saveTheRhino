@@ -6,31 +6,49 @@
     <meta property="og:url" content="https://github.com/yankwong/saveTheRhino" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Save The Rhino" />
-    <meta property="og:description"
-        content="" />
+    <meta property="og:description" content="" />
     <meta property="og:image" content="" />
     <meta property="og:image:width" content="500" />
     <meta property="og:image:height" content="500" />
 
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.7.1.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/game.css">
-
+    <link rel="stylesheet" type="text/css" href="client/css/styles.css">
 </head>
 
 <body>
+    <div class="main save-the-rhino container">
+        <section class="row game-wrapper">
+            <div class="safari">
 
-    <!-- CONTENT GOES HERE!!! -->
+            </div>
+        </section>
+        <section class="control-panel">
+            <div class="row control">
+                <div class="col action action-1"><button class="btn btn-primary">Hire more rangers</button></div>
+                <div class="col action action-2"><button class="btn btn-primary">Strengthen security</button></div>
+            </div>
+            <div class="row control">
+                <div class="col action action-3"><button class="btn btn-primary">Feed them more</button></div>
+                <div class="col action action-4"><button class="btn btn-primary">Do nothing and wait it out</button>
+                </div>
+            </div>
+        </section>
+    </div>
 
+    <script>
+        let STR = {};
+    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="assets/dist/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="client/dist/app.js"></script>
 </body>
 
 </html>

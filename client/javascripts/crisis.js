@@ -1,5 +1,3 @@
-let STR = STR || {};
-
 STR.crisis = (function () {
 
     const crisis = [
@@ -15,13 +13,14 @@ STR.crisis = (function () {
 
 
     let getCrisis = function () {
+        return crisis;
     };
 
     return {
-        initConstants: initConstants
+        getCrisis
     }
 })();
 
 $(function () {
-    STR.constants.initConstants();
+    STR.crisis.getCrisis();
 });

@@ -1,5 +1,3 @@
-let STR = STR || {};
-
 STR.utils = (function () {
     let showDiv = function ($div) {
         $div.removeClass('hidden');
