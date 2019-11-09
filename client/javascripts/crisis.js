@@ -1,8 +1,8 @@
 STR.crisis = (function () {
 
-    const crisis = [
+    let crisis = [
         {
-            name: 'Illegal logging',
+            name: 'Oh no!! Illegal logging is happening in the area',
             impact: 10,
         },
         {
@@ -32,11 +32,11 @@ STR.crisis = (function () {
     ];
 
 
-    let getCrisis = function () {
-        return crisis;
+    let fetchOneCrisis = function () {
+        return STR.utils.randomizeArrayElements(crisis)[0];
     };
 
     return {
-        getCrisis
+        fetchOneCrisis
     }
 })();

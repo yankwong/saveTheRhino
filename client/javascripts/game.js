@@ -70,12 +70,24 @@ STR.games = (function () {
         },
         setCurrentDay = (newDay) => {
             return $('.safari').attr('data-current-day', newDay);
-        }
+        },
         getCurrentDay = () => {
-            return $('.safari').attr('data-current-day');
-        }
+            return $('.safari').attr('data-current-day'); 
+        },
+        displayCrisis = (crisisObject) => {
+            let $alertBox = $('.crisis');
+            const crisisMessage = crisisObject.name;
+            $alertBox.html(crisisMessage);
+        },
+        startTheDay = ()=> {
+            let currentDay = 0;
+            let currentCrisis = STR.crisis.fetchOneCrisis();
+            displayCrisis(currentCrisis);
+            console.log('the current Crisis: ', currentCrisis);
+        },
         initialize = () => {
             putRhinosInMap();
+            startTheDay();
         };
 
     return {
