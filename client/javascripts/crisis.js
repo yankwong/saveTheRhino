@@ -2,12 +2,12 @@ STR.crisis = (function () {
 
     const crisis = [
         {
-            name: 'Tornado',
-            impact: 100
+            name: 'Illegal logging',
+            impact: 10,
         },
         {
-            name: 'Hunter',
-            impact: 10
+            name: 'Procher',
+            impact: 15
         }
     ];
 
@@ -20,7 +20,3 @@ STR.crisis = (function () {
         getCrisis
     }
 })();
-
-$(function () {
-    STR.crisis.getCrisis();
-});
