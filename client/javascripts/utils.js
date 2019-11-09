@@ -24,11 +24,14 @@ STR.utils = (function () {
         getArrayFromOneToMax = (max) => {
             return [...Array(max).keys()].map(x => ++x);
         },
-        getXRandomInt = (max, total) => {
+        randomizeArrayElements = (arrayToSort) => {
+            return arrayToSort.sort(() => 0.5 - Math.random());
+        },
+        getXRandomInt = (max, howManyToGet) => {
             let arrayOfIntegers = getArrayFromOneToMax(max);
-            const shuffled = arrayOfIntegers.sort(() => 0.5 - Math.random());
+            const shuffled = randomizeArrayElements(arrayOfIntegers);
 
-            return shuffled.slice(0, total);
+            return shuffled.slice(0, howManyToGet);
         };
 
     return {
@@ -37,6 +40,7 @@ STR.utils = (function () {
         clearDiv,
         getURLParam,
         getRandomInt,
-        getXRandomInt
+        getXRandomInt,
+        randomizeArrayElements
     }
 })();

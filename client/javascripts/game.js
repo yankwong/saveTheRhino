@@ -1,21 +1,44 @@
 STR.games = (function () {
-    const rhino = [
+    const rhinos = [
         {
             name: 'Delilah',
-            animate: '',
-
+            animate: 'bounce',
         },
         {
             name: 'Harapan',
-            animate: ''
+            animate: 'heartBeat'
+        },
+        {
+            name: 'Andatu',
+            animate: 'shake'
+        },
+        {
+            name: 'Bina',
+            animate: 'pulse'
+        },
+        {
+            name: 'Ratu',
+            animate: 'headShake'
+        },
+        {
+            name: 'Rosa',
+            animate: 'swing'
+        },
+        {
+            name: 'Andalas',
+            animate: 'wobble'
+        },
+        {
+            name: 'Fq',
+            animate: 'rubberBand'
         }
     ]; 
 
     let
         getOneRandomRhino = () => {
-            const totalRhino = rhino.length;
+            const totalRhino = rhinos.length;
             const rhinoIndex = STR.utils.getRandomInt(1, totalRhino);
-            return rhino[rhinoIndex];
+            return rhinos[rhinoIndex];
         },
         getAllRhinoPositionsArray = () => {
             const availablePositions = $('.rhino-position').length;
@@ -23,17 +46,26 @@ STR.games = (function () {
 
             return STR.utils.getXRandomInt(availablePositions, numberOfRhinos);
         },
+        getAnimationDelay = () => {
+            return STR.utils.getRandomInt(2, 8);
+        },
         putRhino = (rhinoId, positionId) => {
-            // pick rhinoFrom rhinos.js
             const positionSelector = `.rhino-position.rhino-position-${positionId}`;
             const $positionDiv = $(positionSelector);
-            const imgHtml = `<img class="animated rhino-${rhinoId}" src="https://place-hold.it/40x40/grey" alt="rhino">`;
+            const rhinoName = rhinos[rhinoId].name;
+            const rhinoAnimateStyle = rhinos[rhinoId].animate;
+            const animateDelay = getAnimationDelay();
+
+            const imgHtml = `
+            <img class="animated infinite delay-${animateDelay}s ${rhinoAnimateStyle} alive rhino-${rhinoId}" src="https://place-hold.it/40x40/grey" alt="${rhinoName}">
+            <span class="rhino-name">${rhinoName}</span>`;
             $positionDiv.prepend(imgHtml);
         },
         putRhinosInMap = () => {
             const positionsArray = getAllRhinoPositionsArray();
-            positionsArray.forEach((element) => {
-                putRhino(0, element);
+            
+            positionsArray.forEach((element, index) => {
+                putRhino(index, element);
             })
         },
         initialize = () => {
