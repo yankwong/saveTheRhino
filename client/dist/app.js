@@ -57,7 +57,7 @@ STR.games = (function () {
         },
         {
             name: 'Andatu',
-            animate: 'shake'
+            animate: 'jello' 
         },
         {
             name: 'Bina',
@@ -93,7 +93,7 @@ STR.games = (function () {
 
             return STR.utils.getXRandomInt(availablePositions, numberOfRhinos);
         },
-        getAnimationDelay = () => {
+        getAnimationDelay = () => { 
             return STR.utils.getRandomInt(2, 8);
         },
         putRhino = (rhinoId, positionId) => {
