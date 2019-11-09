@@ -25,7 +25,7 @@ header p {
     background-image: url('../images/safari.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
-    padding-top: 370px;
+    padding-top: 355px;
 }
 .main .safari .meters {
     position: absolute;
@@ -39,6 +39,16 @@ header p {
     font-weight: bold;
     border: 1px solid blue;
 }
+.crisis {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    min-height: 5vh;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+}
 .rhino-img {
     width: 120px;
     margin: 0 auto;
@@ -47,8 +57,11 @@ header p {
 span.rhino-name {
     display: inline-block;
     margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;
+    color: #f4f0f5;
+    text-transform: uppercase;
 }
-
 .meters .progress {
     height: 50px;
 }

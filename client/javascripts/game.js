@@ -68,6 +68,12 @@ STR.games = (function () {
                 putRhino(index, element);
             })
         },
+        setCurrentDay = (newDay) => {
+            return $('.safari').attr('data-current-day', newDay);
+        }
+        getCurrentDay = () => {
+            return $('.safari').attr('data-current-day');
+        }
         initialize = () => {
             putRhinosInMap();
         };
