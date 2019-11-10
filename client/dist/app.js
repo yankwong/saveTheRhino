@@ -9,134 +9,134 @@ STR.crisis = (function () {
         {
             name: 'Funding for conservation efforts is running low, and is under staffed to protect the rhinos',
             action1: {
-                population: '5',
-                budget: '100'
+                population: '17',
+                budget: '400'
             },
             action2: {
-                population: '5',
-                budget: '100'
+                population: '10',
+                budget: '150'
             },
             action3: {
-                population: '5',
-                budget: '100'
+                population: '22',
+                budget: '500'
             },
             action4: {
-                population: '5',
-                budget: '100'
+                population: '2',
+                budget: '0'
             },
         },
         {
             name: 'Procher are active in the area',
             action1: {
-                population: '5',
-                budget: '100'
+                population: '17',
+                budget: '400'
             },
             action2: {
-                population: '5',
-                budget: '100'
+                population: '10',
+                budget: '150'
             },
             action3: {
-                population: '5',
-                budget: '100'
+                population: '22',
+                budget: '500'
             },
             action4: {
-                population: '5',
-                budget: '100'
+                population: '2',
+                budget: '0'
             },
         },
         {
             name: 'Baby rhino wander away from the parents and being attacked by wild predators',
             action1: {
-                population: '5',
-                budget: '100'
+                population: '17',
+                budget: '400'
             },
             action2: {
-                population: '5',
-                budget: '100'
+                population: '10',
+                budget: '150'
             },
             action3: {
-                population: '5',
-                budget: '100'
+                population: '22',
+                budget: '500'
             },
             action4: {
-                population: '5',
-                budget: '100'
+                population: '2',
+                budget: '0'
             },
         },
         {
             name: 'The herd of rhinos have wandered off from.the protected habitat',
             action1: {
-                population: '5',
-                budget: '100'
+                population: '17',
+                budget: '400'
             },
             action2: {
-                population: '5',
-                budget: '100'
+                population: '10',
+                budget: '150'
             },
             action3: {
-                population: '5',
-                budget: '100'
+                population: '22',
+                budget: '500'
             },
             action4: {
-                population: '5',
-                budget: '100'
+                population: '2',
+                budget: '0'
             },
         },
         {
             name: 'Deforestation continues and habitable area for the rhino lessens',
             action1: {
-                population: '5',
-                budget: '100'
+                population: '17',
+                budget: '400'
             },
             action2: {
-                population: '5',
-                budget: '100'
+                population: '10',
+                budget: '150'
             },
             action3: {
-                population: '5',
-                budget: '100'
+                population: '22',
+                budget: '500'
             },
             action4: {
-                population: '5',
-                budget: '100'
+                population: '2',
+                budget: '0'
             },
         },
         {
             name: 'The female does not get along with the male rhino and distancing herself',
             action1: {
-                population: '5',
-                budget: '100'
+                population: '17',
+                budget: '400'
             },
             action2: {
-                population: '5',
-                budget: '100'
+                population: '10',
+                budget: '150'
             },
             action3: {
-                population: '5',
-                budget: '100'
+                population: '22',
+                budget: '500'
             },
             action4: {
-                population: '5',
-                budget: '100'
+                population: '2',
+                budget: '0'
             },
         },
         {
             name: 'Villagers mistaken the rhino as big pig and beginning to shoot at them',
             action1: {
-                population: '5',
-                budget: '100'
+                population: '17',
+                budget: '400'
             },
             action2: {
-                population: '5',
-                budget: '100'
+                population: '10',
+                budget: '150'
             },
             action3: {
-                population: '5',
-                budget: '100'
+                population: '22',
+                budget: '500'
             },
             action4: {
-                population: '5',
-                budget: '100'
+                population: '2',
+                budget: '0'
             },
         }
     ];
@@ -241,7 +241,8 @@ STR.games = (function () {
             displayCrisis(currentCrisis);
         },
         updatePopulation = (amountToDeduct) => {
-            updateProgressBar('population', population, (population - amountToDeduct));
+            const initPopulation = 80;
+            updateProgressBar('population', initPopulation, (population - amountToDeduct));
             population -= parseInt(amountToDeduct);
         },
         updateProgressBar = (barType, oldValue, newValue) => {
@@ -252,7 +253,8 @@ STR.games = (function () {
             $barToUpdate.css('width', percentValue + '%');
         },
         updateBudget = (amountToDeduct) => {
-            updateProgressBar('budget', budget, (budget - amountToDeduct));
+            const initBudget = 1500;
+            updateProgressBar('budget', initBudget, (budget - amountToDeduct));
             budget -= parseInt(amountToDeduct);
         },
         updateActionButtons = (crisisObject) => {
@@ -274,20 +276,11 @@ STR.games = (function () {
                     updateBudget(budgetImpact);
 
                     if (gameHasEnded()) {
-                        handleEndGame();
-                        if (userHasWon()) {
-                            // GAME OVER: WIN
-                            console.log('YOU WIN!!!!');
-                            triggerEndgameModal(true);
-                        } else {
-                            // GAME OVER: LOSE
-                            console.log('YOU LOSE!!!!');
-                            triggerEndgameModal(false);
-                        }
+                        disableAllActionButtons();
+                        triggerEndgameModal(userHasWon());
                     } else {
                         incrementDay();
                     }
-                    
                 });
             });
         },
@@ -301,13 +294,13 @@ STR.games = (function () {
             $('#endgame-modal .retry-btn').on('click', () => {
                 window.location.href = "https://yankwong.github.io/saveTheRhino/";
             });
-            $('#endgame-modal .share-on-fb').on('click', () => {
-                
-            });
+            $('#endgame-modal .share-on-fb').on('click', () => {});
             $('#endgame-modal .adopt-a-rhino').on('click', ()=> {
                 window.location.href = "https://rhinos.org/adopt/";
             });
-
+            $('#endgame-modal').on('hidden.bs.modal', function() {
+                window.location.href = "https://yankwong.github.io/saveTheRhino/";
+            });
             if (userWon) {
                 const livingRhino = $('.alive')[0];
                 const livingRhinoName = $(livingRhino).attr('alt');
@@ -331,9 +324,6 @@ STR.games = (function () {
             $actionButtons.prop('disabled', true);
             $actionButtons.unbind('click');
         },
-        handleEndGame = () => {
-            disableAllActionButtons();
-        },
         killRhino = (numberToKill) => {
             let $aliveRhinos = $('.rhino-img').not('.dead');
             for (let i = 0; i < numberToKill; i++) {
@@ -348,8 +338,6 @@ STR.games = (function () {
             }
         },
         gameHasEnded = () => {
-            console.log('--- current day : ', currentDay);
-            console.log('--- population : ', population);
             return currentDay > 3 || population <= 0;
         },
         userHasWon = () => {

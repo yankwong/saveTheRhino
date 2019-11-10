@@ -88,7 +88,8 @@ STR.games = (function () {
             displayCrisis(currentCrisis);
         },
         updatePopulation = (amountToDeduct) => {
-            updateProgressBar('population', population, (population - amountToDeduct));
+            const initPopulation = 80;
+            updateProgressBar('population', initPopulation, (population - amountToDeduct));
             population -= parseInt(amountToDeduct);
         },
         updateProgressBar = (barType, oldValue, newValue) => {
@@ -99,7 +100,8 @@ STR.games = (function () {
             $barToUpdate.css('width', percentValue + '%');
         },
         updateBudget = (amountToDeduct) => {
-            updateProgressBar('budget', budget, (budget - amountToDeduct));
+            const initBudget = 1500;
+            updateProgressBar('budget', initBudget, (budget - amountToDeduct));
             budget -= parseInt(amountToDeduct);
         },
         updateActionButtons = (crisisObject) => {
@@ -121,20 +123,11 @@ STR.games = (function () {
                     updateBudget(budgetImpact);
 
                     if (gameHasEnded()) {
-                        handleEndGame();
-                        if (userHasWon()) {
-                            // GAME OVER: WIN
-                            console.log('YOU WIN!!!!');
-                            triggerEndgameModal(true);
-                        } else {
-                            // GAME OVER: LOSE
-                            console.log('YOU LOSE!!!!');
-                            triggerEndgameModal(false);
-                        }
+                        disableAllActionButtons();
+                        triggerEndgameModal(userHasWon());
                     } else {
                         incrementDay();
                     }
-                    
                 });
             });
         },
@@ -148,13 +141,13 @@ STR.games = (function () {
             $('#endgame-modal .retry-btn').on('click', () => {
                 window.location.href = "https://yankwong.github.io/saveTheRhino/";
             });
-            $('#endgame-modal .share-on-fb').on('click', () => {
-                
-            });
+            $('#endgame-modal .share-on-fb').on('click', () => {});
             $('#endgame-modal .adopt-a-rhino').on('click', ()=> {
                 window.location.href = "https://rhinos.org/adopt/";
             });
-
+            $('#endgame-modal').on('hidden.bs.modal', function() {
+                window.location.href = "https://yankwong.github.io/saveTheRhino/";
+            });
             if (userWon) {
                 const livingRhino = $('.alive')[0];
                 const livingRhinoName = $(livingRhino).attr('alt');
@@ -178,9 +171,6 @@ STR.games = (function () {
             $actionButtons.prop('disabled', true);
             $actionButtons.unbind('click');
         },
-        handleEndGame = () => {
-            disableAllActionButtons();
-        },
         killRhino = (numberToKill) => {
             let $aliveRhinos = $('.rhino-img').not('.dead');
             for (let i = 0; i < numberToKill; i++) {
@@ -195,8 +185,6 @@ STR.games = (function () {
             }
         },
         gameHasEnded = () => {
-            console.log('--- current day : ', currentDay);
-            console.log('--- population : ', population);
             return currentDay > 3 || population <= 0;
         },
         userHasWon = () => {
