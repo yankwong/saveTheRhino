@@ -51,7 +51,7 @@ STR.games = (function () {
             return STR.utils.getXRandomInt(availablePositions, numberOfRhinos);
         },
         getAnimationDelay = () => {
-            return STR.utils.getRandomInt(2, 8);
+            return STR.utils.getRandomInt(4, 10);
         },
         putRhino = (rhinoId, positionId) => {
             const positionSelector = `.rhino-position.rhino-position-${positionId}`;

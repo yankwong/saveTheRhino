@@ -203,7 +203,7 @@ STR.games = (function () {
             return STR.utils.getXRandomInt(availablePositions, numberOfRhinos);
         },
         getAnimationDelay = () => {
-            return STR.utils.getRandomInt(2, 8);
+            return STR.utils.getRandomInt(4, 10);
         },
         putRhino = (rhinoId, positionId) => {
             const positionSelector = `.rhino-position.rhino-position-${positionId}`;
@@ -271,7 +271,6 @@ STR.games = (function () {
             let $aliveRhinos = $('.rhino-img').not('.dead');
             for (let i = 0; i < numberOfRhino; i++) {
                 let rhinoElement = $aliveRhinos[i];
-                console.log('what is this again?', $(rhinoElement));
                 let $rhinoElement = $(rhinoElement);
                 $rhinoElement.removeClass('alive bounce heartBeat jello pulse headShake swing wobble rubberBand');
                 $rhinoElement.addClass('dead bounceOut');
