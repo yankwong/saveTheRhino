@@ -110,7 +110,7 @@ STR.games = (function () {
                     const budgetImpact = crisisObject[`action${actionId}`].budget;
 
                     const totalRhinoAlive = $('.alive').length;
-                    const adjustedRhinoCount = Math.ceil(population - populationImpact / 100);
+                    const adjustedRhinoCount = Math.ceil((population - populationImpact) / 10);
 
                     killRhino(totalRhinoAlive - adjustedRhinoCount);
                     updatePopulation(populationImpact);
