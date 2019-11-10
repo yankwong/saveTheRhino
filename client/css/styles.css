@@ -62,6 +62,7 @@ header p {
     width: 120px;
     margin: 0 auto;
     display: block;
+    filter: drop-shadow(6px 7px 3px #333333);
 }
 span.rhino-name {
     display: inline-block;
@@ -70,6 +71,7 @@ span.rhino-name {
     font-weight: bold;
     color: #f4f0f5;
     text-transform: uppercase;
+    filter: drop-shadow(6px 7px 3px #333333);
 }
 .meters .progress {
     height: 50px;
