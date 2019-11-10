@@ -143,7 +143,8 @@ STR.crisis = (function () {
 
 
     let fetchOneCrisis = function () {
-        return STR.utils.randomizeArrayElements(crisis)[0];
+        STR.utils.shuffleArray(crisis);
+        return crisis[0];
     };
 
     return {
@@ -230,8 +231,8 @@ STR.games = (function () {
             $alertBox.html(crisisMessage);
         },
         startTheDay = () => {
-            currentDay = 0;
             let currentCrisis = STR.crisis.fetchOneCrisis();
+            console.log('what is the crisis???', currentCrisis);
             updateActionButtons(currentCrisis);
             displayCrisis(currentCrisis);
         },
@@ -268,7 +269,16 @@ STR.games = (function () {
                     updatePopulation(populationImpact);
                     updateBudget(budgetImpact);
 
-                    incrementDay();
+                    if (gameHasEnded()) {
+                        if (userHasWon()) {
+                            // GAME OVER: WIN
+                        } else {
+                            // GAME OVER: LOSE
+                        }
+                    } else {
+                        incrementDay();
+                    }
+                    
                 });
             });
         },
@@ -285,9 +295,15 @@ STR.games = (function () {
                 },1000);
             }
         },
+        gameHasEnded = () => {
+            return currentDay > 5 || population <= 0;
+        },
+        userHasWon = () => {
+            return gameHasEnded && population > 0;
+        },
         incrementDay = () => {
             currentDay++;
-            console.log('Today is day ' + currentDay);
+            startTheDay();
         },
         initialize = () => {
             putRhinosInMap();
@@ -354,6 +370,13 @@ STR.utils = (function () {
         randomizeArrayElements = (arrayToSort) => {
             return arrayToSort.sort(() => 0.5 - Math.random());
         },
+        // better randomizer
+        shuffleArray = (array) =>{
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        },
         getXRandomInt = (max, howManyToGet) => {
             let arrayOfIntegers = getArrayFromOneToMax(max);
             const shuffled = randomizeArrayElements(arrayOfIntegers);
@@ -368,6 +391,7 @@ STR.utils = (function () {
         getURLParam,
         getRandomInt,
         getXRandomInt,
+        shuffleArray,
         randomizeArrayElements
     }
 })();

@@ -78,8 +78,8 @@ STR.games = (function () {
             $alertBox.html(crisisMessage);
         },
         startTheDay = () => {
-            currentDay = 0;
             let currentCrisis = STR.crisis.fetchOneCrisis();
+            console.log('what is the crisis???', currentCrisis);
             updateActionButtons(currentCrisis);
             displayCrisis(currentCrisis);
         },
@@ -116,7 +116,16 @@ STR.games = (function () {
                     updatePopulation(populationImpact);
                     updateBudget(budgetImpact);
 
-                    incrementDay();
+                    if (gameHasEnded()) {
+                        if (userHasWon()) {
+                            // GAME OVER: WIN
+                        } else {
+                            // GAME OVER: LOSE
+                        }
+                    } else {
+                        incrementDay();
+                    }
+                    
                 });
             });
         },
@@ -133,9 +142,15 @@ STR.games = (function () {
                 },1000);
             }
         },
+        gameHasEnded = () => {
+            return currentDay > 5 || population <= 0;
+        },
+        userHasWon = () => {
+            return gameHasEnded && population > 0;
+        },
         incrementDay = () => {
             currentDay++;
-            console.log('Today is day ' + currentDay);
+            startTheDay();
         },
         initialize = () => {
             putRhinosInMap();

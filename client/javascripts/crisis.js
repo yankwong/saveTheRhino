@@ -138,7 +138,8 @@ STR.crisis = (function () {
 
 
     let fetchOneCrisis = function () {
-        return STR.utils.randomizeArrayElements(crisis)[0];
+        STR.utils.shuffleArray(crisis);
+        return crisis[0];
     };
 
     return {

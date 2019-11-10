@@ -27,6 +27,13 @@ STR.utils = (function () {
         randomizeArrayElements = (arrayToSort) => {
             return arrayToSort.sort(() => 0.5 - Math.random());
         },
+        // better randomizer
+        shuffleArray = (array) =>{
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        },
         getXRandomInt = (max, howManyToGet) => {
             let arrayOfIntegers = getArrayFromOneToMax(max);
             const shuffled = randomizeArrayElements(arrayOfIntegers);
@@ -41,6 +48,7 @@ STR.utils = (function () {
         getURLParam,
         getRandomInt,
         getXRandomInt,
+        shuffleArray,
         randomizeArrayElements
     }
 })();
