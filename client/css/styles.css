@@ -27,7 +27,7 @@ header p {
 /* Safari Area */
 .main .safari {
     width: 100%;
-    min-height: 50vh;
+    min-height: 45vh;
     position: relative;
     background-image: url('../images/safari.jpg');
     background-repeat: no-repeat;
@@ -36,7 +36,7 @@ header p {
 }
 .main .safari .meters {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
     width: 100%;
@@ -48,13 +48,15 @@ header p {
 }
 .crisis {
     position: absolute;
-    top: 0;
+    top: 75px;
     z-index: 10;
     width: 100%;
     min-height: 5vh;
     font-size: 30px;
     text-transform: uppercase;
     text-align: center;
+    opacity: 80%;
+    font-weight: bold;
 }
 .rhino-img {
     width: 120px;
@@ -72,6 +74,9 @@ span.rhino-name {
 .meters .progress {
     height: 50px;
 }
+.population .progress {
+    height: 25px;
+}
 .progress-bar.budget-bar {
     background-color: #30f351;
 }
@@ -80,6 +85,7 @@ span.rhino-name {
     position: relative;
     width: 100%;
 }
+
 
 .rhino-row .col {
     /* border:1px solid pink; */
