@@ -1,3 +1,7 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
 header {
     width: 100%;
     background-color: orange;
@@ -7,6 +11,10 @@ header {
 header .header-body {
     padding: 20px;
 }
+header .header-body p {
+    font-family: 'Archivo Black', sans-serif;
+}
+
 .hidden {
     display: none!important;
 }
@@ -29,10 +37,11 @@ header p {
     width: 100%;
     min-height: 45vh;
     position: relative;
+    padding-top: 390px;
     background-image: url('../images/safari.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
-    padding-top: 355px;
+    background-position: bottom;
 }
 .main .safari .meters {
     position: absolute;
@@ -91,20 +100,21 @@ span.rhino-name {
     width: 100%;
 }
 
-
-.rhino-row .col {
-    /* border:1px solid pink; */
-}
-
 .rhino-position {
     text-align: center;
 }
 
 /* Control Panel*/
+.control-panel {
+    margin-top: 70px;
+}
+.control-panel .col.action {
+    margin: 5px auto;
+}
 .main .control-panel .action-btn {
     width: 100%;
-    height: 80px;
-    font-size: 30px;
+    height: 120px;
+    font-size: 25px;
     text-transform: uppercase;
     padding: 10px;
     filter: drop-shadow(2px 3px 6px #555);

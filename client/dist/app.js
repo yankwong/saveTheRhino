@@ -14,129 +14,129 @@ STR.crisis = (function () {
             },
             action2: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action3: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action4: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
         },
         {
             name: 'Procher are active in the area',
             action1: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action2: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action3: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action4: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
         },
         {
             name: 'Baby rhino wander away from the parents and being attacked by wild predators',
             action1: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action2: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action3: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action4: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
         },
         {
             name: 'The herd of rhinos have wandered off from.the protected habitat',
             action1: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action2: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action3: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action4: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
         },
         {
             name: 'Deforestation continues and habitable area for the rhino lessens',
             action1: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action2: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action3: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action4: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
         },
         {
             name: 'The female does not get along with the male rhino and distancing herself',
             action1: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action2: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action3: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action4: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
         },
         {
             name: 'Villagers mistaken the rhino as big pig and beginning to shoot at them',
             action1: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action2: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action3: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
             action4: {
                 population: '5',
-                budget: '10'
+                budget: '100'
             },
         }
     ];
@@ -232,7 +232,6 @@ STR.games = (function () {
         },
         startTheDay = () => {
             let currentCrisis = STR.crisis.fetchOneCrisis();
-            console.log('what is the crisis???', currentCrisis);
             updateActionButtons(currentCrisis);
             displayCrisis(currentCrisis);
         },
@@ -255,7 +254,7 @@ STR.games = (function () {
             let $actionButtons = $('.control-panel .action-btn');
             $actionButtons.unbind('click');
             $.each($actionButtons, (index, actionButton) => {
-                const $currentButton = $(actionButton)
+                const $currentButton = $(actionButton);
 
                 $currentButton.bind('click', () => {
                     const actionId = index + 1;
@@ -270,10 +269,15 @@ STR.games = (function () {
                     updateBudget(budgetImpact);
 
                     if (gameHasEnded()) {
+                        handleEndGame();
                         if (userHasWon()) {
                             // GAME OVER: WIN
+                            console.log('YOU WIN!!!!');
+                            triggerEndgameModal(true);
                         } else {
                             // GAME OVER: LOSE
+                            console.log('YOU LOSE!!!!');
+                            triggerEndgameModal(false);
                         }
                     } else {
                         incrementDay();
@@ -281,6 +285,26 @@ STR.games = (function () {
                     
                 });
             });
+        },
+        triggerEndgameModal = (userWon) => {
+            const $endGameModal = $('#endgame-modal');
+            const $modalTitle = $('#endgame-modal .modal-title');
+            if (userWon) {
+                $modalTitle.text('YOU WON');
+            } else {
+                $modalTitle.text('YOU LOSE');
+            }
+            $endGameModal.modal('show');
+        },
+        disableAllActionButtons = () => {
+            let $actionButtons = $('.action-btn');
+            $actionButtons.removeClass('btn-primary');
+            $actionButtons.addClass('btn-secondary');
+            $actionButtons.prop('disabled', true);
+            $actionButtons.unbind('click');
+        },
+        handleEndGame = () => {
+            disableAllActionButtons();
         },
         killRhino = (numberToKill) => {
             let $aliveRhinos = $('.rhino-img').not('.dead');
@@ -296,7 +320,9 @@ STR.games = (function () {
             }
         },
         gameHasEnded = () => {
-            return currentDay > 5 || population <= 0;
+            console.log('--- current day : ', currentDay);
+            console.log('--- population : ', population);
+            return currentDay > 3 || population <= 0;
         },
         userHasWon = () => {
             return gameHasEnded && population > 0;

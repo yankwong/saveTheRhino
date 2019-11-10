@@ -15,6 +15,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.7.1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="client/css/styles.css">
 </head>
 
@@ -25,6 +26,26 @@
         </div>
     </header>
     <div class="main container-fluid">
+        <div class="modal fade" id="endgame-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                        <button type="button" class="btn btn-primary">SHARE ON FB</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <section class="row game-wrapper">
             <div class="safari" data-current-day="1">
                 <div class="meters">
@@ -99,22 +120,25 @@
         <section class="control-panel">
             <div class="row control-row">
                 <div class="col action action-1">
-                    <button class="action-btn btn action-1 btn-primary">Hire rangers - $2K</button>
+                    <button class="action-btn btn action-1 btn-primary">Arrange team to move the rhinos to protected
+                        zone</button>
                 </div>
             </div>
             <div class="row control-row">
                 <div class="col action action-2">
-                    <button class="action-btn btn action-2 btn-primary">Plant Tree - $1K</button>
+                    <button class="action-btn btn action-2 btn-primary">Educate campaigns and community effort on nearby
+                        villages</button>
                 </div>
             </div>
             <div class="row control-row">
                 <div class="col action action-3">
-                    <button class="action-btn btn action-3 btn-primary">Feed them more $100</button>
+                    <button class="action-btn btn action-3 btn-primary">Relocate rhino to scantuary to recover their
+                        population</button>
                 </div>
             </div>
             <div class="row control-row">
                 <div class="col action action-4">
-                    <button class="action-btn btn action-4 btn-primary">Do nothing - $0</button>
+                    <button class="action-btn btn action-4 btn-primary">Fundraising</button>
                 </div>
             </div>
 

@@ -79,7 +79,6 @@ STR.games = (function () {
         },
         startTheDay = () => {
             let currentCrisis = STR.crisis.fetchOneCrisis();
-            console.log('what is the crisis???', currentCrisis);
             updateActionButtons(currentCrisis);
             displayCrisis(currentCrisis);
         },
@@ -102,7 +101,7 @@ STR.games = (function () {
             let $actionButtons = $('.control-panel .action-btn');
             $actionButtons.unbind('click');
             $.each($actionButtons, (index, actionButton) => {
-                const $currentButton = $(actionButton)
+                const $currentButton = $(actionButton);
 
                 $currentButton.bind('click', () => {
                     const actionId = index + 1;
@@ -117,10 +116,15 @@ STR.games = (function () {
                     updateBudget(budgetImpact);
 
                     if (gameHasEnded()) {
+                        handleEndGame();
                         if (userHasWon()) {
                             // GAME OVER: WIN
+                            console.log('YOU WIN!!!!');
+                            triggerEndgameModal(true);
                         } else {
                             // GAME OVER: LOSE
+                            console.log('YOU LOSE!!!!');
+                            triggerEndgameModal(false);
                         }
                     } else {
                         incrementDay();
@@ -128,6 +132,26 @@ STR.games = (function () {
                     
                 });
             });
+        },
+        triggerEndgameModal = (userWon) => {
+            const $endGameModal = $('#endgame-modal');
+            const $modalTitle = $('#endgame-modal .modal-title');
+            if (userWon) {
+                $modalTitle.text('YOU WON');
+            } else {
+                $modalTitle.text('YOU LOSE');
+            }
+            $endGameModal.modal('show');
+        },
+        disableAllActionButtons = () => {
+            let $actionButtons = $('.action-btn');
+            $actionButtons.removeClass('btn-primary');
+            $actionButtons.addClass('btn-secondary');
+            $actionButtons.prop('disabled', true);
+            $actionButtons.unbind('click');
+        },
+        handleEndGame = () => {
+            disableAllActionButtons();
         },
         killRhino = (numberToKill) => {
             let $aliveRhinos = $('.rhino-img').not('.dead');
@@ -143,7 +167,9 @@ STR.games = (function () {
             }
         },
         gameHasEnded = () => {
-            return currentDay > 5 || population <= 0;
+            console.log('--- current day : ', currentDay);
+            console.log('--- population : ', population);
+            return currentDay > 3 || population <= 0;
         },
         userHasWon = () => {
             return gameHasEnded && population > 0;
