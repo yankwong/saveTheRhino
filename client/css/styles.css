@@ -90,9 +90,13 @@ span.rhino-name {
 }
 .progress-bar {
     width: 100%;
+    font-size: 20px;
+    color: white;
 }
 .progress-bar.budget-bar {
     background-color: #30f351;
+    font-size: 25px;
+    color: black;
 }
 
 .population, .budget {
@@ -148,4 +152,14 @@ span.rhino-name {
     width: 200px;
     height: 60px;
     font-size: 20px;
+}
+#endgame-modal .survior-name {
+    font-weight: bold;
+    color:#f16980;
+    font-size: 35px;
+}
+#endgame-modal .more-than-one {
+    font-weight: bold;
+    color:#f16980;
+    font-size: 35px;
 }

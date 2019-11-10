@@ -307,11 +307,11 @@ STR.games = (function () {
                 const totalLivingRhino = $('.alive').length;
                 const moreThanOneSurvived = totalLivingRhino > 1 ? true : false;
 
-                let finalText = `Congrats you have saved ${livingRhinoName}`;
-                finalText += moreThanOneSurvived ? ` and ${totalLivingRhino - 1} more rhino. ` : '';
+                let finalText = `Congrats you have saved <span class="survior-name">${livingRhinoName}</span>`;
+                finalText += moreThanOneSurvived ? ` and <span class="more-than-one">${totalLivingRhino - 1}</span> more rhino. ` : '';
                 finalText += endgameText[endgameTextKey].body;
 
-                $modalBody.text(finalText);
+                $modalBody.html(finalText);
             } else {
                 $modalBody.text(endgameText[endgameTextKey].body);
             }
