@@ -3,31 +3,136 @@ STR.crisis = (function () {
     let crisis = [
         {
             name: 'Oh no!! Illegal logging is happening in the area',
-            impact: 10,
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         },
         {
             name: 'Procher',
-            impact: 15
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         },
         {
             name: 'Baby rhino attacked by wild predators',
-            impact: 5
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         },
         {
             name: 'wandered away from safe zone',
-            impact: 8
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         },
         {
             name: 'deforestation worsen',
-            impact: 10
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         },
         {
             name: 'too aggressive to bread',
-            impact: 5
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         },
         {
             name: 'mistakenly hunted',
-            impact: 10
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         }
     ];
 

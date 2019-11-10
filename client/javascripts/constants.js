@@ -1,5 +1,5 @@
 $(function () {
   STR.constants = {
-    maxRhino: 8
+    maxRhino: 8,
   }
 });

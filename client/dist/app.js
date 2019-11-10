@@ -1,6 +1,6 @@
 $(function () {
   STR.constants = {
-    maxRhino: 8
+    maxRhino: 8,
   }
 });
 STR.crisis = (function () {
@@ -8,31 +8,136 @@ STR.crisis = (function () {
     let crisis = [
         {
             name: 'Oh no!! Illegal logging is happening in the area',
-            impact: 10,
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         },
         {
             name: 'Procher',
-            impact: 15
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         },
         {
             name: 'Baby rhino attacked by wild predators',
-            impact: 5
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         },
         {
             name: 'wandered away from safe zone',
-            impact: 8
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         },
         {
             name: 'deforestation worsen',
-            impact: 10
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         },
         {
             name: 'too aggressive to bread',
-            impact: 5
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         },
         {
             name: 'mistakenly hunted',
-            impact: 10
+            action1: {
+                population: '2',
+                budget: '10'
+            },
+            action2: {
+                population: '2',
+                budget: '10'
+            },
+            action3: {
+                population: '2',
+                budget: '10'
+            },
+            action4: {
+                population: '2',
+                budget: '10'
+            },
         }
     ];
 
@@ -46,6 +151,7 @@ STR.crisis = (function () {
     }
 })();
 STR.games = (function () {
+    
     const rhinos = [
         {
             name: 'Delilah',
@@ -57,7 +163,7 @@ STR.games = (function () {
         },
         {
             name: 'Andatu',
-            animate: 'jello' 
+            animate: 'jello'
         },
         {
             name: 'Bina',
@@ -79,9 +185,12 @@ STR.games = (function () {
             name: 'Fq',
             animate: 'rubberBand'
         }
-    ]; 
+    ];
 
     let
+        currentDay = 0,
+        population = 80,
+        budget = 1500,
         getOneRandomRhino = () => {
             const totalRhino = rhinos.length;
             const rhinoIndex = STR.utils.getRandomInt(1, totalRhino);
@@ -93,7 +202,7 @@ STR.games = (function () {
 
             return STR.utils.getXRandomInt(availablePositions, numberOfRhinos);
         },
-        getAnimationDelay = () => { 
+        getAnimationDelay = () => {
             return STR.utils.getRandomInt(2, 8);
         },
         putRhino = (rhinoId, positionId) => {
@@ -110,27 +219,71 @@ STR.games = (function () {
         },
         putRhinosInMap = () => {
             const positionsArray = getAllRhinoPositionsArray();
-            
+
             positionsArray.forEach((element, index) => {
                 putRhino(index, element);
             })
         },
-        setCurrentDay = (newDay) => {
-            return $('.safari').attr('data-current-day', newDay);
-        },
-        getCurrentDay = () => {
-            return $('.safari').attr('data-current-day'); 
-        },
+        // setCurrentDay = (newDay) => {
+        //     return $('.safari').attr('data-current-day', newDay);
+        // },
+        // getCurrentDay = () => {
+        //     return $('.safari').attr('data-current-day'); 
+        // },
         displayCrisis = (crisisObject) => {
             let $alertBox = $('.crisis');
             const crisisMessage = crisisObject.name;
             $alertBox.html(crisisMessage);
         },
-        startTheDay = ()=> {
-            let currentDay = 0;
+        startTheDay = () => {
+            currentDay = 0;
             let currentCrisis = STR.crisis.fetchOneCrisis();
+            updateActionButtons(currentCrisis);
             displayCrisis(currentCrisis);
-            console.log('the current Crisis: ', currentCrisis);
+        },
+        updatePopulation = (amountToDeduct) => {
+            population -= parseInt(amountToDeduct);
+            console.log('new population', population);
+        },
+        updateBudget = (amountToDeduct) => {
+            budget -= parseInt(amountToDeduct);
+            console.log('new budget', budget);
+        },
+        updateActionButtons = (crisisObject) => {
+            let $actionButtons = $('.control-panel .action-btn');
+            $actionButtons.unbind('click');
+            $.each($actionButtons, (index, actionButton) => {
+                const $currentButton = $(actionButton)
+
+                $currentButton.bind('click', () => {
+                    const actionId = index + 1;
+                    const populationImpact = crisisObject[`action${actionId}`].population;
+                    const budgetImpact = crisisObject[`action${actionId}`].budget;
+
+                    updatePopulation(populationImpact);
+                    updateBudget(budgetImpact);
+                    killRhino(1);
+                    incrementDay();
+                });
+            });
+        },
+        killRhino = (numberOfRhino) => {
+            let $aliveRhinos = $('.rhino-img').not('.dead');
+            for (let i = 0; i < numberOfRhino; i++) {
+                let rhinoElement = $aliveRhinos[i];
+                console.log('what is this again?', $(rhinoElement));
+                let $rhinoElement = $(rhinoElement);
+                $rhinoElement.removeClass('alive bounce heartBeat jello pulse headShake swing wobble rubberBand');
+                $rhinoElement.addClass('dead bounceOut');
+                setTimeout(function() {
+                    $rhinoElement.addClass('invisible');
+                    $($rhinoElement.siblings('span.rhino-name')[0]).addClass('invisible');
+                },1000);
+            }
+        },
+        incrementDay = () => {
+            currentDay++;
+            console.log('Today is day ' + currentDay);
         },
         initialize = () => {
             putRhinosInMap();
