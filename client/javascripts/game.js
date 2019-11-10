@@ -89,14 +89,14 @@ STR.games = (function () {
         },
         updateProgressBar = (barType, oldValue, newValue) => {
             const barSelector = barType === 'population' ? 
-                                    '.progress .budget-bar' : '.progress .population-bar';
+                                    '.progress .population-bar' : '.progress .budget-bar';
             let $barToUpdate = $(barSelector);
             const percentValue = parseFloat((newValue / oldValue) * 100).toFixed(1);
             $barToUpdate.css('width', percentValue + '%');
         },
         updateBudget = (amountToDeduct) => {
+            updateProgressBar('budget', budget, (budget - amountToDeduct));
             budget -= parseInt(amountToDeduct);
-            console.log('new budget', budget);
         },
         updateActionButtons = (crisisObject) => {
             let $actionButtons = $('.control-panel .action-btn');
@@ -109,16 +109,20 @@ STR.games = (function () {
                     const populationImpact = crisisObject[`action${actionId}`].population;
                     const budgetImpact = crisisObject[`action${actionId}`].budget;
 
+                    const totalRhinoAlive = $('.alive').length;
+                    const adjustedRhinoCount = Math.ceil(population - populationImpact / 100);
+
+                    killRhino(totalRhinoAlive - adjustedRhinoCount);
                     updatePopulation(populationImpact);
                     updateBudget(budgetImpact);
-                    killRhino(1);
+
                     incrementDay();
                 });
             });
         },
-        killRhino = (numberOfRhino) => {
+        killRhino = (numberToKill) => {
             let $aliveRhinos = $('.rhino-img').not('.dead');
-            for (let i = 0; i < numberOfRhino; i++) {
+            for (let i = 0; i < numberToKill; i++) {
                 let rhinoElement = $aliveRhinos[i];
                 let $rhinoElement = $(rhinoElement);
                 $rhinoElement.removeClass('alive bounce heartBeat jello pulse headShake swing wobble rubberBand');

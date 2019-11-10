@@ -107,6 +107,7 @@ span.rhino-name {
     font-size: 30px;
     text-transform: uppercase;
     padding: 10px;
+    filter: drop-shadow(2px 3px 6px #555);
 }
 
 .main .control-panel .control-row {
