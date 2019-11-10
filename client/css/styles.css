@@ -44,7 +44,6 @@ header p {
     text-align: center;
     font-size: 50px;
     font-weight: bold;
-    border: 1px solid blue;
 }
 .crisis {
     position: absolute;
@@ -75,9 +74,13 @@ span.rhino-name {
 }
 .meters .progress {
     height: 50px;
+    background-color: white;
 }
 .population .progress {
     height: 25px;
+}
+.progress-bar {
+    width: 100%;
 }
 .progress-bar.budget-bar {
     background-color: #30f351;

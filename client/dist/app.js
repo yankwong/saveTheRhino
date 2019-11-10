@@ -224,12 +224,6 @@ STR.games = (function () {
                 putRhino(index, element);
             })
         },
-        // setCurrentDay = (newDay) => {
-        //     return $('.safari').attr('data-current-day', newDay);
-        // },
-        // getCurrentDay = () => {
-        //     return $('.safari').attr('data-current-day'); 
-        // },
         displayCrisis = (crisisObject) => {
             let $alertBox = $('.crisis');
             const crisisMessage = crisisObject.name;
@@ -242,8 +236,15 @@ STR.games = (function () {
             displayCrisis(currentCrisis);
         },
         updatePopulation = (amountToDeduct) => {
+            updateProgressBar('population', population, (population - amountToDeduct));
             population -= parseInt(amountToDeduct);
-            console.log('new population', population);
+        },
+        updateProgressBar = (barType, oldValue, newValue) => {
+            const barSelector = barType === 'population' ? 
+                                    '.progress .budget-bar' : '.progress .population-bar';
+            let $barToUpdate = $(barSelector);
+            const percentValue = parseFloat((newValue / oldValue) * 100).toFixed(1);
+            $barToUpdate.css('width', percentValue + '%');
         },
         updateBudget = (amountToDeduct) => {
             budget -= parseInt(amountToDeduct);
